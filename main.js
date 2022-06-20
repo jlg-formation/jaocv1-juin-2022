@@ -1,31 +1,23 @@
 console.log("start");
 
 (function () {
+  function Board() {
+    this.draw = function () {
+      drawPoints();
+      drawLines();
+    };
+  }
+
   var svgns = "http://www.w3.org/2000/svg";
 
   var sampleNbr = 10;
   var multiplicationFactor = 2;
 
-  var cx0 = 50;
-  var cy0 = 50;
-  var r0 = 45;
-
   function drawPoints() {
-    var gPoints = document.querySelector("g.points");
-    console.log("gPoints: ", gPoints);
     for (var i = 0; i < sampleNbr; i++) {
       console.log("i: ", i);
-
-      var angle = (i * (Math.PI * 2)) / sampleNbr;
-      var cx = cx0 + r0 * Math.cos(angle);
-      var cy = cy0 + r0 * Math.sin(angle);
-
-      var circle = document.createElementNS(svgns, "circle");
-      circle.setAttributeNS(null, "cx", cx);
-      circle.setAttributeNS(null, "cy", cy);
-      circle.setAttributeNS(null, "r", 1);
-
-      gPoints.appendChild(circle);
+      var point = Point.getFromIndex(i, sampleNbr);
+      point.draw();
     }
   }
 
@@ -38,25 +30,20 @@ console.log("start");
   function drawLine(p1Integer, p2Integer) {
     var gLines = document.querySelector("g.lines");
 
-    var angle1 = (p1Integer * (Math.PI * 2)) / sampleNbr;
-    var angle2 = (p2Integer * (Math.PI * 2)) / sampleNbr;
-
-    var x1 = cx0 + r0 * Math.cos(angle1);
-    var y1 = cy0 + r0 * Math.sin(angle1);
-    var x2 = cx0 + r0 * Math.cos(angle2);
-    var y2 = cy0 + r0 * Math.sin(angle2);
+    var point1 = Point.getFromIndex(p1Integer, sampleNbr);
+    var point2 = Point.getFromIndex(p2Integer, sampleNbr);
 
     var line = document.createElementNS(svgns, "line");
-    line.setAttributeNS(null, "x1", x1);
-    line.setAttributeNS(null, "y1", y1);
-    line.setAttributeNS(null, "x2", x2);
-    line.setAttributeNS(null, "y2", y2);
+    line.setAttributeNS(null, "x1", point1.x);
+    line.setAttributeNS(null, "y1", point1.y);
+    line.setAttributeNS(null, "x2", point2.x);
+    line.setAttributeNS(null, "y2", point2.y);
 
     gLines.appendChild(line);
   }
 
-  drawPoints();
-  drawLines();
+  var board = new Board();
+  board.draw();
 })();
 
 console.log("this.cx: ", this.cx);
