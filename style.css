@@ -13,3 +13,7 @@ circle {
   stroke-width: 0.02em;
   stroke: black;
 }
+
+g.points circle {
+  fill: black;
+}
