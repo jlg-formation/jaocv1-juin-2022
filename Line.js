@@ -1,15 +1,22 @@
-(function () {
-  "use strict";
-  var svgns = "http://www.w3.org/2000/svg";
+var svgns = "http://www.w3.org/2000/svg";
 
-  function Line(point1, point2) {
+class Line extends Drawable {
+  static getFromIndexes = function (index1, index2, sampleNbr) {
+    var point1 = Point.getFromIndex(index1, sampleNbr);
+    var point2 = Point.getFromIndex(index2, sampleNbr);
+
+    return new Line(point1, point2);
+  };
+
+  constructor(point1, point2) {
+    super();
     this.point1 = point1;
     this.point2 = point2;
   }
 
-  Line.prototype.draw = function () {
+  draw() {
     console.log("this: ", this);
-    Object.getPrototypeOf(Object.getPrototypeOf(this)).draw();
+    super.draw();
 
     var gLines = document.querySelector("g.lines");
 
@@ -21,17 +28,5 @@
     line.setAttributeNS(null, "y2", this.point2.y);
 
     gLines.appendChild(line);
-  };
-
-  Object.setPrototypeOf(Line.prototype, Drawable.prototype);
-  console.log("Line.prototype: ", Line.prototype);
-
-  Line.getFromIndexes = function (index1, index2, sampleNbr) {
-    var point1 = Point.getFromIndex(index1, sampleNbr);
-    var point2 = Point.getFromIndex(index2, sampleNbr);
-
-    return new Line(point1, point2);
-  };
-
-  window.Line = Line;
-})();
+  }
+}
