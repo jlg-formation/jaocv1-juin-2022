@@ -1,13 +1,23 @@
 export class Command {
   #callback = () => {};
+
   #config;
+
+  set config(cfg) {
+    this.#config = cfg;
+    this.applyConfig();
+    this.#callback(this.#config);
+  }
+
+  get config() {
+    return this.#config;
+  }
 
   #isPlaying = false;
   #subscription = undefined;
 
   constructor(config) {
-    this.#config = config;
-    this.applyConfig();
+    this.config = config;
     this.listen();
     this.configurePlayBtn();
   }
@@ -17,28 +27,29 @@ export class Command {
   }
 
   applyConfig() {
-    const keys = Object.keys(this.#config);
+    const keys = Object.keys(this.config);
 
     keys.forEach((key) => {
       const span = document.querySelector(`div.command label.${key} span`);
-      span.innerHTML = Math.round(this.#config[key] * 1e2) / 1e2;
+      span.innerHTML = Math.round(this.config[key] * 1e2) / 1e2;
 
       const input = document.querySelector(`div.command label.${key} input`);
-      input.value = this.#config[key];
+      input.value = this.config[key];
     });
   }
 
   listen() {
-    const keys = Object.keys(this.#config);
+    const keys = Object.keys(this.config);
 
     keys.forEach((key) => {
       const input = document.querySelector(`div.command label.${key} input`);
       input.addEventListener("input", (event) => {
         const input = event.target;
         const value = +input.value;
-        this.#config[key] = value;
-        this.applyConfig();
-        this.#callback(this.#config);
+        this.config = {
+          ...this.config,
+          [key]: value,
+        };
       });
     });
   }
@@ -60,9 +71,10 @@ export class Command {
     if (this.#isPlaying) {
       this.#subscription = setInterval(() => {
         console.log("playing");
-        this.#config.multiplicationFactor += 0.02;
-        this.applyConfig();
-        this.#callback(this.#config);
+        this.config = {
+          ...this.config,
+          multiplicationFactor: this.config.multiplicationFactor + 0.02,
+        };
       }, 30);
     } else {
       if (this.#subscription !== undefined) {
