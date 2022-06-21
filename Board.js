@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   function Board() {
     this.config = {
       sampleNbr: 20,
@@ -23,11 +25,14 @@
 
     this.drawLines = function () {
       for (var i = 0; i < this.config.sampleNbr; i++) {
-        Line.getFromIndexes(
+        var line = Line.getFromIndexes(
           i,
           i * this.config.multiplicationFactor,
           this.config.sampleNbr
-        ).draw();
+        );
+
+        console.log("line: ", line);
+        line.draw();
       }
     };
   }

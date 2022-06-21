@@ -1,9 +1,10 @@
 console.log("start");
 
 (function () {
+  "use strict";
   var board = new Board();
   board.setConfig({
-    sampleNbr: 10,
+    sampleNbr: 100,
     multiplicationFactor: 2,
   });
   board.draw();

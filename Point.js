@@ -1,4 +1,6 @@
 (function () {
+  "use strict";
+
   var cx0 = 50;
   var cy0 = 50;
   var r0 = 45;
@@ -8,16 +10,17 @@
   function Point(x, y) {
     this.x = x;
     this.y = y;
-    this.draw = function () {
-      var gPoints = document.querySelector("g.points");
-      var circle = document.createElementNS(svgns, "circle");
-      circle.setAttributeNS(null, "cx", this.x);
-      circle.setAttributeNS(null, "cy", this.y);
-      circle.setAttributeNS(null, "r", 1);
-
-      gPoints.appendChild(circle);
-    };
   }
+
+  Point.prototype.draw = function () {
+    var gPoints = document.querySelector("g.points");
+    var circle = document.createElementNS(svgns, "circle");
+    circle.setAttributeNS(null, "cx", this.x);
+    circle.setAttributeNS(null, "cy", this.y);
+    circle.setAttributeNS(null, "r", 1);
+
+    gPoints.appendChild(circle);
+  };
 
   Point.getFromAngle = function (angle) {
     var cx = cx0 + r0 * Math.cos(angle);
