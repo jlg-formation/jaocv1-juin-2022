@@ -1,11 +1,5 @@
-(function () {
-  "use strict";
-
-  function Drawable() {}
-
-  Drawable.prototype.draw = function () {
+class Drawable {
+  draw() {
     console.log("I draw myself.");
-  };
-
-  window.Drawable = Drawable;
-})();
+  }
+}
