@@ -2,29 +2,37 @@ import { Line } from "./Line.js";
 import { Point } from "./Point.js";
 
 export class Board {
-  constructor() {
-    this.config = {
-      sampleNbr: 20,
-      multiplicationFactor: 3,
-    };
+  #config = {
+    sampleNbr: 20,
+    multiplicationFactor: 3,
+  };
+
+  set config(configObject) {
+    this.#config = configObject;
+    this.draw();
   }
 
-  setConfig(configObject) {
-    this.config = configObject;
+  get config() {
+    console.log("oulala on m'appelle");
+    return this.#config;
+  }
+
+  constructor() {
+    this.draw();
   }
 
   drawPoints() {
-    for (let i = 0; i < this.config.sampleNbr; i++) {
-      Point.getFromIndex(i, this.config.sampleNbr).draw();
+    for (let i = 0; i < this.#config.sampleNbr; i++) {
+      Point.getFromIndex(i, this.#config.sampleNbr).draw();
     }
   }
 
   drawLines() {
-    for (let i = 0; i < this.config.sampleNbr; i++) {
+    for (let i = 0; i < this.#config.sampleNbr; i++) {
       const line = Line.getFromIndexes(
         i,
-        i * this.config.multiplicationFactor,
-        this.config.sampleNbr
+        i * this.#config.multiplicationFactor,
+        this.#config.sampleNbr
       );
 
       line.draw();

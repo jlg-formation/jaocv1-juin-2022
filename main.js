@@ -3,18 +3,13 @@ import { Board } from "./Board.js";
 console.log("start");
 
 const board = new Board();
-board.setConfig({
-  sampleNbr: 100,
-  multiplicationFactor: 2,
-});
-board.draw();
 
 setTimeout(() => {
-  board.setConfig({
+  board.config = {
     sampleNbr: 50,
     multiplicationFactor: 3,
-  });
-  board.draw();
+  };
+  console.log("board.config: ", board.config);
 }, 2000);
 
 console.log("this", this);
