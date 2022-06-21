@@ -18,13 +18,11 @@ export class Line extends Drawable {
   }
 
   draw() {
-    console.log("this: ", this);
     super.draw();
 
     var gLines = document.querySelector("g.lines");
 
     var line = document.createElementNS(svgns, "line");
-    console.log("this: ", this);
     line.setAttributeNS(null, "x1", this.point1.x);
     line.setAttributeNS(null, "y1", this.point1.y);
     line.setAttributeNS(null, "x2", this.point2.x);

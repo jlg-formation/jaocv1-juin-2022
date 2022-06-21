@@ -1,3 +1,4 @@
+import { Drawable } from "./Drawable.js";
 import { Line } from "./Line.js";
 import { Point } from "./Point.js";
 
@@ -15,7 +16,6 @@ export class Board {
 
   drawPoints() {
     for (var i = 0; i < this.config.sampleNbr; i++) {
-      console.log("i: ", i);
       Point.getFromIndex(i, this.config.sampleNbr).draw();
     }
   }
@@ -28,7 +28,6 @@ export class Board {
         this.config.sampleNbr
       );
 
-      console.log("line: ", line);
       line.draw();
     }
   }

@@ -10,4 +10,4 @@ board.setConfig({
 board.draw();
 
 console.log("this", this);
-console.log("globalThis: ", globalThis);
+console.log("globalThis.board: ", globalThis.board);
