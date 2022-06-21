@@ -5,7 +5,7 @@ console.log("start");
 
 const board = new Board();
 
-const command = new Command();
+const command = new Command(board.config);
 command.onUpdate((config) => {
   board.config = config;
 });
