@@ -8,7 +8,9 @@ function getAngleFromIndex(index, sampleNbr) {
   return (index * (Math.PI * 2)) / sampleNbr;
 }
 
-class Point extends Drawable {
+import { Drawable } from "./Drawable.js";
+
+export class Point extends Drawable {
   constructor(x, y) {
     super();
     this.x = x;

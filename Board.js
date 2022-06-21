@@ -1,4 +1,7 @@
-class Board {
+import { Line } from "./Line.js";
+import { Point } from "./Point.js";
+
+export class Board {
   constructor() {
     this.config = {
       sampleNbr: 20,

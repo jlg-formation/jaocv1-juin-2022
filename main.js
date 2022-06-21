@@ -1,5 +1,7 @@
 console.log("start");
 
+import { Board } from "./Board.js";
+
 (function () {
   "use strict";
   var board = new Board();
@@ -10,4 +12,4 @@ console.log("start");
   board.draw();
 })();
 
-console.log("this.cx: ", this.cx);
+console.log("this", this);

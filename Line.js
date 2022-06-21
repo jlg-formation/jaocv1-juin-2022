@@ -1,6 +1,9 @@
 var svgns = "http://www.w3.org/2000/svg";
 
-class Line extends Drawable {
+import { Drawable } from "./Drawable.js";
+import { Point } from "./Point.js";
+
+export class Line extends Drawable {
   static getFromIndexes = function (index1, index2, sampleNbr) {
     var point1 = Point.getFromIndex(index1, sampleNbr);
     var point2 = Point.getFromIndex(index2, sampleNbr);
