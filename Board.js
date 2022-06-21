@@ -13,7 +13,6 @@ export class Board {
   }
 
   get config() {
-    console.log("oulala on m'appelle");
     return this.#config;
   }
 
