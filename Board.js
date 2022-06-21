@@ -32,7 +32,14 @@ export class Board {
   }
 
   draw() {
+    this.clean();
     this.drawPoints();
     this.drawLines();
+  }
+
+  clean() {
+    ["g.points", "g.lines"].forEach(
+      (selector) => (document.querySelector(selector).innerHTML = "")
+    );
   }
 }

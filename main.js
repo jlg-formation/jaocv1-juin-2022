@@ -9,5 +9,13 @@ board.setConfig({
 });
 board.draw();
 
+setTimeout(() => {
+  board.setConfig({
+    sampleNbr: 50,
+    multiplicationFactor: 3,
+  });
+  board.draw();
+}, 2000);
+
 console.log("this", this);
 console.log("globalThis.board: ", globalThis.board);
