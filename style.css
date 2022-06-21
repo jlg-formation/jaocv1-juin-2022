@@ -1,5 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
+}
+
+h1 {
+  margin: 0;
 }
 
 svg {
@@ -21,4 +29,29 @@ g.points circle {
 g.lines line {
   stroke: black;
   stroke-width: 0.02em;
+}
+
+div.command {
+  border: 0.1em solid black;
+  width: 60em;
+  display: flex;
+  flex-flow: column;
+  padding: 0.3em;
+  gap: 1em;
+  align-items: center;
+}
+
+div.command label {
+  width: 100%;
+  padding: 0.3em;
+}
+
+div.command input {
+  padding: 0;
+  width: 100%;
+}
+
+div.command button {
+  width: 10em;
+  padding: 0.5em 1em;
 }

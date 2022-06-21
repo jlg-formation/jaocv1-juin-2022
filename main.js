@@ -1,16 +1,14 @@
 import { Board } from "./Board.js";
+import { Command } from "./Command.js";
 
 console.log("start");
 
 const board = new Board();
 
-setTimeout(() => {
-  board.config = {
-    sampleNbr: 50,
-    multiplicationFactor: 3,
-  };
-  console.log("board.config: ", board.config);
-}, 2000);
+const command = new Command();
+command.onUpdate((config) => {
+  board.config = config;
+});
 
 console.log("this", this);
 console.log("globalThis.board: ", globalThis.board);
