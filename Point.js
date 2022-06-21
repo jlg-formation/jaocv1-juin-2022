@@ -1,3 +1,5 @@
+import { Drawable } from "./Drawable.js";
+
 var cx0 = 50;
 var cy0 = 50;
 var r0 = 45;
@@ -7,8 +9,6 @@ var svgns = "http://www.w3.org/2000/svg";
 function getAngleFromIndex(index, sampleNbr) {
   return (index * (Math.PI * 2)) / sampleNbr;
 }
-
-import { Drawable } from "./Drawable.js";
 
 export class Point extends Drawable {
   constructor(x, y) {
