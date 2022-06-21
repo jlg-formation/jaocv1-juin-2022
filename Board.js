@@ -1,4 +1,3 @@
-import { Drawable } from "./Drawable.js";
 import { Line } from "./Line.js";
 import { Point } from "./Point.js";
 
@@ -15,14 +14,14 @@ export class Board {
   }
 
   drawPoints() {
-    for (var i = 0; i < this.config.sampleNbr; i++) {
+    for (let i = 0; i < this.config.sampleNbr; i++) {
       Point.getFromIndex(i, this.config.sampleNbr).draw();
     }
   }
 
   drawLines() {
-    for (var i = 0; i < this.config.sampleNbr; i++) {
-      var line = Line.getFromIndexes(
+    for (let i = 0; i < this.config.sampleNbr; i++) {
+      const line = Line.getFromIndexes(
         i,
         i * this.config.multiplicationFactor,
         this.config.sampleNbr
