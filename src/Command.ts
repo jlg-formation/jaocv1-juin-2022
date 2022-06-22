@@ -55,7 +55,7 @@ export class Command {
         `div.command label.${key} input`,
         HTMLInputElement
       );
-      input.addEventListener("input", (event) => {
+      input.addEventListener("input", () => {
         const value = +input.value;
         this.config = {
           ...this.config,

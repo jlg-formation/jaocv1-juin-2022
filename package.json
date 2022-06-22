@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "watch": "webpack --watch --mode development",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/jlg-formation/jaocv1-juin-2022#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.18.0",
     "html-webpack-plugin": "^5.5.0",
