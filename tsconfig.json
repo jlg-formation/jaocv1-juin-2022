@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": false,
+    "strict": false,
     "outDir": "dist",
     "target": "ES6"
   },
