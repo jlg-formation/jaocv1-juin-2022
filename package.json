@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jlg-formation/jaocv1-juin-2022#readme",
   "devDependencies": {
-    "eslint": "^8.18.0"
+    "eslint": "^8.18.0",
+    "typescript": "^4.7.4"
   }
 }
