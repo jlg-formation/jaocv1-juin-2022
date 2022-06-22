@@ -1,3 +1,5 @@
+import "./style.css";
+
 import { Board } from "./Board";
 import { Command } from "./Command";
 import { CommandConfig } from "./interfaces/CommandConfig";

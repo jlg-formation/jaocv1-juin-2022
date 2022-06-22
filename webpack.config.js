@@ -1,7 +1,15 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (_, env) => {
   const config = {
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "src/index.html",
+      }),
+      new MiniCssExtractPlugin(),
+    ],
     entry: "./src/main.ts",
     output: {
       filename: "bundle.js",
@@ -15,6 +23,10 @@ module.exports = (_, env) => {
           use: "ts-loader",
           exclude: /node_modules/,
         },
+        {
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
+        },
       ],
     },
     resolve: {
@@ -22,6 +34,13 @@ module.exports = (_, env) => {
     },
 
     mode: env.mode ? env.mode : "production",
+    devServer: {
+      static: {
+        directory: path.join(__dirname, "dist"),
+      },
+      compress: true,
+      port: 9000,
+    },
   };
 
   if (env.mode === "development") {

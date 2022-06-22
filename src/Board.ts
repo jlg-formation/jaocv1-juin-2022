@@ -4,7 +4,7 @@ import { querySelector } from "./utils";
 
 export class Board {
   #config = {
-    sampleNbr: 20,
+    sampleNbr: 80,
     multiplicationFactor: 3,
   };
 
