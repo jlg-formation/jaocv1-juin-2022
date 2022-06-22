@@ -1,5 +1,6 @@
 import { Line } from "./Line.js";
 import { Point } from "./Point.js";
+import { querySelector } from "./utils.js";
 
 export class Board {
   #config = {
@@ -46,7 +47,7 @@ export class Board {
 
   clean() {
     ["g.points", "g.lines"].forEach(
-      (selector) => (document.querySelector(selector).innerHTML = "")
+      (selector) => (querySelector(selector).innerHTML = "")
     );
   }
 }

@@ -1,7 +1,12 @@
-export class Command {
-  #callback = () => {};
+import { CommandConfig } from "./interfaces/CommandConfig.js";
+import { querySelector } from "./utils.js";
 
-  #config;
+type CmdCallback = (config: CommandConfig) => void;
+
+export class Command {
+  #callback: CmdCallback = () => {};
+
+  #config: CommandConfig;
 
   set config(cfg) {
     this.#config = cfg;
@@ -14,27 +19,31 @@ export class Command {
   }
 
   #isPlaying = false;
-  #subscription = undefined;
+  #subscription: number | undefined = undefined;
 
-  constructor(config) {
+  constructor(config: CommandConfig) {
+    this.#config = config;
     this.config = config;
     this.listen();
     this.configurePlayBtn();
   }
 
-  onUpdate(callback) {
+  onUpdate(callback: CmdCallback) {
     this.#callback = callback;
   }
 
   applyConfig() {
-    const keys = Object.keys(this.config);
+    const keys = Object.keys(this.config) as (keyof CommandConfig)[];
 
     keys.forEach((key) => {
-      const span = document.querySelector(`div.command label.${key} span`);
-      span.innerHTML = Math.round(this.config[key] * 1e2) / 1e2;
+      const span = querySelector(`div.command label.${key} span`);
+      span.innerHTML = "" + Math.round(this.config[key] * 1e2) / 1e2;
 
-      const input = document.querySelector(`div.command label.${key} input`);
-      input.value = this.config[key];
+      const input = querySelector(
+        `div.command label.${key} input`,
+        HTMLInputElement
+      );
+      input.value = "" + this.config[key];
     });
   }
 
@@ -42,9 +51,11 @@ export class Command {
     const keys = Object.keys(this.config);
 
     keys.forEach((key) => {
-      const input = document.querySelector(`div.command label.${key} input`);
+      const input = querySelector(
+        `div.command label.${key} input`,
+        HTMLInputElement
+      );
       input.addEventListener("input", (event) => {
-        const input = event.target;
         const value = +input.value;
         this.config = {
           ...this.config,
@@ -55,7 +66,7 @@ export class Command {
   }
 
   configurePlayBtn() {
-    const btn = document.querySelector("div.command button");
+    const btn = querySelector("div.command button");
     console.log("btn: ", btn);
     btn.addEventListener("click", (event) => {
       console.log("event: ", event);
@@ -65,7 +76,7 @@ export class Command {
   }
 
   propagateIsPlayingState() {
-    const btn = document.querySelector("div.command button");
+    const btn = querySelector("div.command button");
     btn.innerHTML = !this.#isPlaying ? "Start" : "Stop";
 
     if (this.#isPlaying) {
@@ -76,10 +87,10 @@ export class Command {
           multiplicationFactor: this.config.multiplicationFactor + 0.02,
         };
       }, 30);
-    } else {
-      if (this.#subscription !== undefined) {
-        clearInterval(this.#subscription);
-      }
+      return;
+    }
+    if (this.#subscription !== undefined) {
+      clearInterval(this.#subscription);
     }
   }
 }
