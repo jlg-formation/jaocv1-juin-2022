@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
     "strict": true,
     "outDir": "dist",
     "target": "ES6",
     "module": "es6",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "sourceMap": true
   }
 }
