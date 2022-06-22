@@ -25,9 +25,7 @@ export class Line extends Drawable {
     this.point2 = point2;
   }
 
-  draw() {
-    super.draw();
-
+  override draw() {
     const gLines = querySelector("g.lines");
 
     const line = document.createElementNS(svgns, "line");

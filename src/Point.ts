@@ -21,8 +21,7 @@ export class Point extends Drawable {
     this.y = y;
   }
 
-  draw() {
-    super.draw();
+  override draw() {
     const gPoints = querySelector("g.points");
     if (gPoints === null) {
       throw new Error("cannot find gPoints (element with selector g.points)");
