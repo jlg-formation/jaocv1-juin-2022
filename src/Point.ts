@@ -1,5 +1,5 @@
-import { Drawable } from "./Drawable.js";
-import { querySelector } from "./utils.js";
+import { Drawable } from "./Drawable";
+import { querySelector } from "./utils";
 
 const cx0 = 50;
 const cy0 = 50;

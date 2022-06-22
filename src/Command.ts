@@ -1,5 +1,5 @@
-import { CommandConfig } from "./interfaces/CommandConfig.js";
-import { querySelector } from "./utils.js";
+import { CommandConfig } from "./interfaces/CommandConfig";
+import { querySelector } from "./utils";
 
 type CmdCallback = (config: CommandConfig) => void;
 
@@ -19,7 +19,7 @@ export class Command {
   }
 
   #isPlaying = false;
-  #subscription: number | undefined = undefined;
+  #subscription: NodeJS.Timer | undefined = undefined;
 
   constructor(config: CommandConfig) {
     this.#config = config;

@@ -1,6 +1,6 @@
-import { Drawable } from "./Drawable.js";
-import { Point } from "./Point.js";
-import { querySelector } from "./utils.js";
+import { Drawable } from "./Drawable";
+import { Point } from "./Point";
+import { querySelector } from "./utils";
 
 const svgns = "http://www.w3.org/2000/svg";
 

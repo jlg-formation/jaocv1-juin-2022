@@ -1,6 +1,6 @@
-import { Line } from "./Line.js";
-import { Point } from "./Point.js";
-import { querySelector } from "./utils.js";
+import { Line } from "./Line";
+import { Point } from "./Point";
+import { querySelector } from "./utils";
 
 export class Board {
   #config = {
